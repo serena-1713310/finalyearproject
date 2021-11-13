@@ -42,8 +42,9 @@ public class Rating implements Comparable<Rating> {
 
 	@Override
 	public int compareTo(Rating other) {
-		return Long.compare(getTimestamp(),
-				other.getTimestamp());
+		Integer uid = this.userId;
+		Integer uid2 = other.getUserId();
+		return uid.compareTo(uid2);
 	}
 	
 	
