@@ -69,7 +69,7 @@ public class DataModel {
 	
 	
 
-	protected Collection<? extends Integer> getUsers() {
+	protected Set<Integer> getUsers() {
 		for(Rating r : ratings) {
 			int uid = r.getUserId();
 			if(!users.contains(uid)) {
@@ -79,7 +79,7 @@ public class DataModel {
 		return users;
 	}
 
-	protected Collection<? extends Integer> getMovies() {
+	protected Set<Integer> getMovies() {
 		for(Rating r : ratings) {
 			int mid = r.getMovieId();
 			if(!movies.contains(mid)) {
