@@ -1,10 +1,10 @@
 package data;
 
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -67,7 +67,15 @@ public class DataModel {
 		return userMap;
 	}
 	
+	protected Date oldestRating() {
+		Collections.sort(ratings, new DateComparator());
+		return new Date(ratings.get(0).getTimestamp() * 1000);
+	}
 	
+	protected Date newestRating() {
+		Collections.sort(ratings, new DateComparator());
+		return new Date(ratings.get(ratings.size()-1).getTimestamp() * 1000);
+	}
 
 	protected Set<Integer> getUsers() {
 		for(Rating r : ratings) {
@@ -92,6 +100,4 @@ public class DataModel {
 	public ArrayList<Rating> getRatings() {
 		return this.ratings;
 	}
-	
-	
 }
