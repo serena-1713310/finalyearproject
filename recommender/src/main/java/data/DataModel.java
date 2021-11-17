@@ -1,10 +1,10 @@
 package data;
 
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -67,7 +67,31 @@ public class DataModel {
 		return userMap;
 	}
 	
+	protected ArrayList<Rating> filter(int minRatings){
+		ArrayList<Rating> newRatings = new ArrayList<Rating>();
+		Map<Integer,ArrayList<Rating>> map = userRatingsMap();
+		for(Map.Entry<Integer, ArrayList<Rating>> entry : map.entrySet()) {
+			ArrayList<Rating> current = entry.getValue();
+			if(current.size() > minRatings) {
+				newRatings.addAll(current);
+			}
+			else {
+				continue;
+			}
+		}
+		
+		return ratings;
+	}
 	
+	protected Date oldestRating() {
+		Collections.sort(ratings, new DateComparator());
+		return new Date(ratings.get(0).getTimestamp() * 1000);
+	}
+	
+	protected Date newestRating() {
+		Collections.sort(ratings, new DateComparator());
+		return new Date(ratings.get(ratings.size()-1).getTimestamp() * 1000);
+	}
 
 	protected Set<Integer> getUsers() {
 		for(Rating r : ratings) {
@@ -93,5 +117,8 @@ public class DataModel {
 		return this.ratings;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "DataModel [ratings=" + ratings + ", users=" + users + ", movies=" + movies + "]";
+	}
 }

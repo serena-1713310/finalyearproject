@@ -23,13 +23,13 @@ public class Dataset {
 
 	public Dataset(String filePath) {
 		this.filePath = filePath;
-		parseData();
+		this.parseData();
 	}
 
 	public Dataset(String filePath, boolean hasHeader) {
 		this.filePath = filePath;
 		this.hasHeader = hasHeader;
-		parseData();
+		this.parseData();
 	}
 
 	private void parseData(){

@@ -19,18 +19,8 @@ import model.Rating;
 public class Recommender {
 
 	private static Logger log = LogManager.getLogger(Recommender.class);
-
-	public static void main(String[] args) {
-		// parsing raw ratings data
-		Dataset ds = new Dataset("data/ratings.csv",true);
-		// creating new datamodel
-		DataModel model = new DataModel(ds);
-		ArrayList<Rating> allRatings = model.getRatings();
-		Splitter split = new Splitter(0.2);
-		
-		// using linkedhashmap over map because generic map doesnt guarantee insertion order
-		LinkedHashMap<Integer,ArrayList<Rating>> sortedRatings = split.sortMapByDate(model);
-		
+	
+	public Recommender() {
 		
 	}
 }
