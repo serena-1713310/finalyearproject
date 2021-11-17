@@ -67,6 +67,22 @@ public class DataModel {
 		return userMap;
 	}
 	
+	protected ArrayList<Rating> filter(int minRatings){
+		ArrayList<Rating> newRatings = new ArrayList<Rating>();
+		Map<Integer,ArrayList<Rating>> map = userRatingsMap();
+		for(Map.Entry<Integer, ArrayList<Rating>> entry : map.entrySet()) {
+			ArrayList<Rating> current = entry.getValue();
+			if(current.size() > minRatings) {
+				newRatings.addAll(current);
+			}
+			else {
+				continue;
+			}
+		}
+		
+		return ratings;
+	}
+	
 	protected Date oldestRating() {
 		Collections.sort(ratings, new DateComparator());
 		return new Date(ratings.get(0).getTimestamp() * 1000);
@@ -99,5 +115,10 @@ public class DataModel {
 
 	public ArrayList<Rating> getRatings() {
 		return this.ratings;
+	}
+	
+	@Override
+	public String toString() {
+		return "DataModel [ratings=" + ratings + ", users=" + users + ", movies=" + movies + "]";
 	}
 }
