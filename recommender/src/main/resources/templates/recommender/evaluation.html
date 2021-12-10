@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Model Evaluation</title>
+<link th:href="@{/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+	<nav class="navbar">
+		<div id="menu" class="menu">
+			 <ul class="menu-items">
+				<li><a href="/">Home</a> </li>
+				<li><a href="/movies">Movies</a></li>
+				<li><a href="/als">ALS</a></li>
+				<li><a href="/login">Login</a></li>
+				<li><a href="/recommend">Recommendations</a></li>
+			</ul>
+		</div>
+	</nav>
+	<div class="container">
+		<div class="content">
+		<h1>Evaluation Report</h1>
+		<p>Training time:<br th:text="${trainTime}">seconds</p>
+		<table>
+			<tr th:each="metric: ${evalResults}">
+				<td th:text="${metric.key}"/>
+				<td th:text="${metric.value}"/>
+		</table>
+		<br><a href="/"><button>RE-TRAIN MODEL</button></a>
+		</div>
+	</div>
+</body>
+</html>

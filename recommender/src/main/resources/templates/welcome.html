@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<title>Welcome!</title>
+<link rel="stylesheet" type="text/css" href="/css/main.css" />
+</head>
+<body>
+	<div th:replace="fragments/navigation :: navbar"></div>
+	<h1>WELCOME!</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Student number</th>
+				<th>Project Synopsis</th>
+			</tr>
+		</thead>
+		<tr>
+			<td>Serena Lai</td>
+			<td>1713310</td>
+			<td>Recommender System implementing alternating least squares
+				algorithm for final year project for B.Sc Computer Science.</td>
+		</tr>
+	</table>
+</body>
+</html>

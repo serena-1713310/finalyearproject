@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<title>Movies</title>
+<link rel="stylesheet" type="text/css" href="/css/main.css" />
+</head>
+<body>
+
+	<div th:replace="fragments/navigation :: navbar"></div>
+
+	<form th:action="@{/movies/search}" method="get">
+		<input type="search" name="keyword"
+			placeholder="Search movie database">
+		<button type="submit">Search</button>
+	</form>
+
+	<table id="movies">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Title</th>
+				<th>Genre</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="movie : ${moviesList}">
+				<td th:text="${movie.movieId}"></td>
+				<td th:text="${movie.title}"></td>
+				<td th:text="${movie.genre}"></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

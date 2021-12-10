@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Rating New Movie</title>
+<link rel="stylesheet" type="text/css" href="/css/main.css" />
+</head>
+<body>
+
+	<div th:replace="fragments/navigation :: navbar"></div>
+	
+	<h1>Rating new movie</h1>	
+	
+	<form action="#" th:action="@{/rating/new}" th:object="${rating}" 
+	method="post">
+	<table>
+	<tr>
+	<th>
+	</tr>
+	</table>
+		<input type="number" th:field="*{userId}" min=1 placeholder="Enter user ID" required/>
+		<input type="number" th:field="*{movieId}" min=1 placeholder="Enter movie ID" required/>
+		<input type="number" th:field="*{rating}" min=1 max=5 placeholder="Enter rating 1-5" required/>
+		
+		<button type="submit">Rate</button>
+	</form>
+
+</body>
+</html>

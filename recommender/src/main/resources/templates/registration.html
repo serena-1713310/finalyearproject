@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Registration</title>
+<link th:href="@{/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+	<nav class="navbar">
+		<div id="menu" class="menu">
+			<ul class="menu-items">
+				<li><a href="/">Home</a></li>
+				<li><a href="/login">Movies</a></li>
+				<li><a href="/als">ALS</a></li>
+				<li><a href="/login">Login</a></li>
+				<li><a href="/recommend">Recommendations</a></li>
+			</ul>
+		</div>
+	</nav>
+	<div class="container">
+		<h1>Register An Account</h1>
+		<form th:action="@{/register}" method="post" th:object="${account}">
+			<div th:if="${#fields.hasErrors('*')}">
+				<p th:each="err : ${#fields.errors('*')}" th:text="${err}"></p>
+			</div>
+			<label>First Name</label>
+			<input type="text" placeholder="First name" name="firstName"
+				id="firstName" required> 
+			<label>Last Name</label>
+			<input type="text"
+				placeholder="Last name" name="lastName" id="lastName" required>
+			<label>Email</label>
+			<input type="text" placeholder="Email" name="email" id="email"
+				required> 
+			<label>Password</label>
+			<input type="password" placeholder="Password"
+				name="password" id="pw" required>
+			<label>Password</label>
+			<input type="password"
+				placeholder="Confirm password" name="confirmpw" id="confirmpassword"
+				required> <br> <input type="submit" value="Register">
+			<a href="/login">Already have an account?</a>
+		</form>
+	</div>
+</body>
+</html>
